@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, Text, Image } from 'react-native';
-import { StarIcon } from 'react-native-heroicons/solid';
+import React from "react";
+import { View, Text, Image } from "react-native";
+import { StarIcon } from "react-native-heroicons/solid";
 
 const ProfileHeader = ({ profilePic, name, email, points }) => {
   const maxStars = 5;
@@ -23,11 +23,13 @@ const ProfileHeader = ({ profilePic, name, email, points }) => {
               <StarIcon
                 key={index}
                 size={20} // Adjust star size
-                color={index < activeStars ? 'gold' : 'gray'}
+                color={index < activeStars ? "gold" : "gray"}
               />
             ))}
           </View>
-          <Text className="text-sm font-bold text-green-600">Score: {points}</Text>
+          <Text className="text-sm font-bold text-green-600">
+            Score: {points}
+          </Text>
         </View>
       </View>
     </View>
