@@ -1,25 +1,16 @@
-import { FlatList, View, Text } from "react-native";
-import React from "react";
+import { FlatList, View, Text, RefreshControl } from "react-native";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-
+import images from "@/constants/images"
 import Item from "@/components/Item";
 import useAppwrite from "@/lib/useAppwrite";
 import { getAllItems } from "@/lib/appwrite";
-
-const { data: _items, refetch } = useAppwrite(getAllItems);
-
-const [refreshing, setRefreshing] = useState(false);
-
-const onRefresh = async () => {
-  setRefreshing(true);
-  await refetch();
-  setRefreshing(false);
-};
+import SearchBar from "@/components/SearchBar";
 
 const items = [
   {
     id: "1",
-    photo: icons.xbox,
+    photo: images.Xbox,
     itemName: "Xbox",
     price: "$15",
     description:
@@ -27,14 +18,14 @@ const items = [
   },
   {
     id: "2",
-    photo: icons.profile,
+    photo: images.Xbox,
     itemName: "Profile",
     price: "$15",
     description: "Profile item with excellent features and durability.",
   },
   {
     id: "3",
-    photo: icons.xbox,
+    photo: images.Xbox,
     itemName: "Xbox",
     price: "$15",
     description:
@@ -42,7 +33,7 @@ const items = [
   },
   {
     id: "4",
-    photo: icons.xbox,
+    photo: images.Xbox,
     itemName: "Xbox",
     price: "$15",
     description:
@@ -50,7 +41,7 @@ const items = [
   },
   {
     id: "5",
-    photo: icons.xbox,
+    photo: images.Xbox,
     itemName: "Xbox",
     price: "$15",
     description:
@@ -60,15 +51,26 @@ const items = [
 
 
 const Home = () => {
+
+  // const { data: _items, refetch } = useAppwrite(getAllItems);
+
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await refetch();
+    setRefreshing(false);
+  };
+
   return (
     <SafeAreaView className="flex-1 bg-[#E6E6FA]">
       <FlatList
         className="pt-0 mt-0"
         data={items}
-        keyExtractor={(item) => item.$id}
+        keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <Item
-            id={item.$id}
+            id={item.id}
             photo={item.photo}
             itemName={item.itemName}
             price={item.price}

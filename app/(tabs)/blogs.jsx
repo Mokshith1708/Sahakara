@@ -5,20 +5,9 @@ import BlogPost from "@/components/BlogPost";
 import useAppwrite from "@/lib/useAppwrite";
 import { getAllBlogs } from "@/lib/appwrite";
 
-const { data: _blogs, refetch } = useAppwrite(getAllBlogs);
-
-// func to get blog-author details
-
-const [refreshing, setRefreshing] = useState(false);
-
-const onRefresh = async () => {
-  setRefreshing(true);
-  await refetch();
-  setRefreshing(false);
-};
-
 const blogs = [
   {
+    id: "1",
     profilePic: "https://via.placeholder.com/150",
     name: "Jane Doe",
     timeAgo: "2 hours ago",
@@ -26,6 +15,7 @@ const blogs = [
     imageUri: "https://via.placeholder.com/600x400",
   },
   {
+    id: "2",
     profilePic: "https://via.placeholder.com/150",
     name: "John Smith",
     timeAgo: "5 hours ago",
@@ -33,6 +23,7 @@ const blogs = [
     imageUri: "https://via.placeholder.com/600x400",
   },
   {
+    id: "3",
     profilePic: "https://via.placeholder.com/150",
     name: "Alice Johnson",
     timeAgo: "1 day ago",
@@ -43,21 +34,34 @@ const blogs = [
 ];
 
 const Blogs = () => {
+
+  const { data: _blogs, refetch } = useAppwrite(getAllBlogs);
+
+  // func to get blog-author details
+
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await refetch();
+    setRefreshing(false);
+  };
+
   return (
     <SafeAreaView className="">
       <FlatList
         data={blogs}
-        keyExtractor={(blog) => blog.$id}
-        renderItem={({ blog }) => (
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
           <BlogPost
-            blogId={blog.$id}
-            profileURI={null} // has to compute using authorId
-            author={null}
-            time={blog.$updatedAt}
-            content={blog.content}
-            blogURI={blog.blogURI}
-            likes={blog.likes}
-            thumbsUp={blog.thumbsUp}
+            blogId={item.id} // item.$id
+            profileURI={item.profilePic} // has to compute using authorId
+            author={item.name}
+            time={item.timeAgo} // item.$updatedAt
+            content={item.content}
+            blogURI={item.imageUri} // blog.blogURI
+            likes={0}
+            thumbsUp={0}
           />
         )}
         ListEmptyComponent={() => (
