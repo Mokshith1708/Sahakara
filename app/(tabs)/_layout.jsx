@@ -2,6 +2,7 @@ import { Tabs } from "expo-router";
 import { icons } from "../../constants"
 import { Image, View,Text } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import ThreeDotsMenu from "@/components/ThreeDotsMenu";
 
 const TabIcon = ({ icon,name,color})=>{
   return (
@@ -76,13 +77,14 @@ export default function RootLayout() {
     <Tabs.Screen name="blog" 
     options={{
         title:"Blogs",
-        headerShown: false,
+        headerStyle: { backgroundColor: '#FFA500' },
         tabBarIcon:({color}) =>{
           return(
           <TabIcon
           icon={icons.blog}
           name="Blogs"
           color={color}
+          
           />
           )
         }
@@ -90,7 +92,8 @@ export default function RootLayout() {
     <Tabs.Screen name="profile" 
     options={{
         title:"Profile",
-        headerShown: false,
+        headerStyle: { backgroundColor: '#FFA500' },
+        headerRight: () => <ThreeDotsMenu />,
         tabBarIcon:({color}) =>{
           return(
           <TabIcon

@@ -1,12 +1,88 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+// src/screens/ProfileScreen.js
 
-const profile = () => {
+import React from 'react';
+import { ScrollView, View, Text } from 'react-native';
+import ProfileHeader from '@/components/ProfileHeader';
+import BlogItem from '@/components/BlogItem';
+import ItemSection from '@/components/ItemSection';
+import { StarIcon } from 'react-native-heroicons/solid'; // Ensure this package is installed
+
+const profile = {
+  profilePic: "https://via.placeholder.com/150",
+  name: "John Doe",
+  email: "john.doe@example.com",
+  points: 1200,   // Example value
+  greenIndex: 75, // Example value
+};
+
+const blogs = [
+  {
+    id: 1,
+    title: "My First Blog",
+    content: "This is the content of my first blog. It is a bit long, so only part of it will be shown here.",
+  },
+  {
+    id: 2,
+    title: "Another Blog",
+    content: "Content of another blog.",
+  },
+  // Add more blog data as needed
+];
+
+const items = [
+  {
+    id: 1,
+    name: "Item 1",
+    description: "This is item 1 description. It may be a bit long, so only a preview will be shown here.",
+  },
+  {
+    id: 2,
+    name: "Item 2",
+    description: "This is item 2 description.",
+  },
+  // Add more item data as needed
+];
+
+const ProfileScreen = () => {
+  const handleSeeMore = () => {
+    // Handle "See More" action
+    console.log('See More button clicked');
+  };
+
   return (
-    <View className="flex-1 items-center justify-center">
-      <Text>Profile</Text>
-    </View>
-  )
-}
+    <ScrollView className="flex-1 bg-[#E6E6FA] p-4">
+      <ProfileHeader
+        profilePic={profile.profilePic}
+        name={profile.name}
+        email={profile.email}
+        points={profile.points}
+      />
 
-export default profile
+     <View className="mt-4">
+        {/* <Text className="text-lg font-semibold mb-2">My Items</Text> */}
+        {items.slice(0, 1).map(item => (
+          <ItemSection
+            key={item.id}
+            name={item.name}
+            description={item.description}
+            onSeeMore={handleSeeMore}
+          />
+        ))}
+      </View>
+
+      <View className="mb-6">
+        {/* <Text className="text-lg font-semibold mb-2">My Blogs</Text> */}
+        {blogs.slice(0, 1).map(blog => (
+          <BlogItem
+            key={blog.id}
+            title={blog.title}
+            content={blog.content}
+            onSeeMore={handleSeeMore}
+          />
+        ))}
+      </View>
+    </ScrollView>
+  );
+};
+
+export default ProfileScreen;
