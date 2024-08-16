@@ -5,7 +5,7 @@ import BlogPost from "@/components/BlogPost";
 import useAppwrite from "@/lib/useAppwrite";
 import { getAllBlogs } from "@/lib/appwrite";
 
-const { data: blogs, refetch } = useAppwrite(getAllBlogs);
+const { data: _blogs, refetch } = useAppwrite(getAllBlogs);
 
 // func to get blog-author details
 
@@ -16,6 +16,31 @@ const onRefresh = async () => {
   await refetch();
   setRefreshing(false);
 };
+
+const blogs = [
+  {
+    profilePic: "https://via.placeholder.com/150",
+    name: "Jane Doe",
+    timeAgo: "2 hours ago",
+    content: "This is an example of a LinkedIn-style blog post. Here you can write about your thoughts, experiences, or share updates.",
+    imageUri: "https://via.placeholder.com/600x400",
+  },
+  {
+    profilePic: "https://via.placeholder.com/150",
+    name: "John Smith",
+    timeAgo: "5 hours ago",
+    content: "Another example of a blog post. You can include different types of content here.",
+    imageUri: "https://via.placeholder.com/600x400",
+  },
+  {
+    profilePic: "https://via.placeholder.com/150",
+    name: "Alice Johnson",
+    timeAgo: "1 day ago",
+    content: "Sharing some more content for this blog post. Make sure to keep it engaging and informative.",
+    imageUri: "",
+  },
+  // Add more blog posts as needed
+];
 
 const Blogs = () => {
   return (

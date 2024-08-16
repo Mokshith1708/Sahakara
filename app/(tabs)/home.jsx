@@ -6,7 +6,7 @@ import Item from "@/components/Item";
 import useAppwrite from "@/lib/useAppwrite";
 import { getAllItems } from "@/lib/appwrite";
 
-const { data: items, refetch } = useAppwrite(getAllItems);
+const { data: _items, refetch } = useAppwrite(getAllItems);
 
 const [refreshing, setRefreshing] = useState(false);
 
@@ -15,6 +15,49 @@ const onRefresh = async () => {
   await refetch();
   setRefreshing(false);
 };
+
+const items = [
+  {
+    id: "1",
+    photo: icons.xbox,
+    itemName: "Xbox",
+    price: "$15",
+    description:
+      "High-quality gaming console with amazing graphics and performance.",
+  },
+  {
+    id: "2",
+    photo: icons.profile,
+    itemName: "Profile",
+    price: "$15",
+    description: "Profile item with excellent features and durability.",
+  },
+  {
+    id: "3",
+    photo: icons.xbox,
+    itemName: "Xbox",
+    price: "$15",
+    description:
+      "High-quality gaming console with amazing graphics and performance.",
+  },
+  {
+    id: "4",
+    photo: icons.xbox,
+    itemName: "Xbox",
+    price: "$15",
+    description:
+      "High-quality gaming console with amazing graphics and performance.",
+  },
+  {
+    id: "5",
+    photo: icons.xbox,
+    itemName: "Xbox",
+    price: "$15",
+    description:
+      "High-quality gaming console with amazing graphics and performance.",
+  },
+];
+
 
 const Home = () => {
   return (
