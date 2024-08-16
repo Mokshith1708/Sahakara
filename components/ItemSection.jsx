@@ -1,10 +1,11 @@
-// src/components/ItemSection.js
-
-import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React from "react";
+import { View, Text, TouchableOpacity } from "react-native";
 
 const ItemSection = ({ name, description, onSeeMore }) => {
-  const previewDescription = description.length > 100 ? description.substring(0, 100) + '...' : description;
+  const previewDescription =
+    description.length > 100
+      ? description.substring(0, 100) + "..."
+      : description;
 
   return (
     <View className="bg-[#FFFFF0] p-4 mb-4 rounded-lg shadow-sm">

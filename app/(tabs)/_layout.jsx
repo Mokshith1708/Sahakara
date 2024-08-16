@@ -59,7 +59,7 @@ export default function RootLayout() {
           }}
         />
         <Tabs.Screen
-          name="blog"
+          name="blogs"
           options={{
             title: "Blogs",
             headerStyle: { backgroundColor: "#FFA500" },
