@@ -78,7 +78,7 @@ const Home = () => {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <Item
-            id={item.id}
+            itemId={item.id}
             photo={item.photo}
             itemName={item.itemName}
             price={item.price}
