@@ -1,47 +1,103 @@
 // src/components/ThreeDotsMenu.js
 
-import React, { useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import { Ionicons } from "@expo/vector-icons"; // Ensure you have this package installed
+import React, { useState, useRef } from 'react';
+import { View, Text, TouchableOpacity, Animated, Dimensions, TouchableWithoutFeedback} from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+
+const { width } = Dimensions.get('window');
+
 
 const ThreeDotsMenu = () => {
   const [visible, setVisible] = useState(false);
+  const slideAnim = useRef(new Animated.Value(width)).current;
 
   const toggleMenu = () => {
-    setVisible(!visible);
+    if (visible) {
+      Animated.timing(slideAnim, {
+        toValue: width,
+        duration: 300,
+        useNativeDriver: true,
+      }).start(() => setVisible(false));
+    } else {
+      setVisible(true);
+      Animated.timing(slideAnim, {
+        toValue: 0,
+        duration: 300,
+        useNativeDriver: true,
+      }).start();
+    }
   };
 
+  const closeMenu = () => {
+    Animated.timing(slideAnim, {
+      toValue: width,
+      duration: 300,
+      useNativeDriver: true,
+    }).start(() => setVisible(false));
+  };
+
+  const handlePressOutside = (event) => {
+    // Close menu if the touch is outside the menu
+    const { pageX, pageY } = event.nativeEvent;
+    if (pageX<width) {
+      closeMenu();
+    }
+  };
+
+
   return (
-    <View style={{ position: "relative" }}>
-      <TouchableOpacity onPress={toggleMenu} style={{ padding: 10 }}>
-        <Ionicons name="ellipsis-vertical" size={24} color="#000" />
+    <View style={{ position: 'relative', flex: 1 }}>
+      <TouchableOpacity onPress={toggleMenu} style={{ position: 'absolute', top: 10, right: 10, zIndex: 2 }}>
+        <Ionicons name="ellipsis-vertical" size={24} color="#000000" />
       </TouchableOpacity>
       {visible && (
-        <View
-          style={{
-            position: "absolute",
-            top: 40, // Adjust based on your layout
-            right: 0,
-            backgroundColor: "white",
-            borderRadius: 8,
-            shadowColor: "#000",
-            shadowOffset: { width: 0, height: 2 },
-            shadowOpacity: 0.1,
-            shadowRadius: 4,
-            padding: 10,
-            elevation: 5,
-          }}
-        >
-          <TouchableOpacity onPress={() => console.log("Option 1 Pressed")}>
-            <Text style={{ padding: 10 }}>Option 1</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => console.log("Option 2 Pressed")}>
-            <Text style={{ padding: 10 }}>Option 2</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => console.log("Option 3 Pressed")}>
-            <Text style={{ padding: 10 }}>Option 3</Text>
-          </TouchableOpacity>
-        </View>
+         <TouchableWithoutFeedback onPress={handlePressOutside}>
+        <Animated.View style={{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          transform: [{ translateX: slideAnim }],
+          backgroundColor: '#b68fbf',
+          borderRadius: 8,
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.1,
+          shadowRadius: 4,
+          padding: 10,
+          elevation: 5,
+          height: '1250%',
+          width: '75%',
+        }}>
+          {/* Heading */}
+          <Text style={{
+            fontSize: 18,
+            fontWeight: 'bold',
+            color: '#000000',
+            marginBottom: 15,
+            textAlign: 'center'
+          }}>
+            Profile Settings
+          </Text>
+
+          {['Option 1', 'Option 2', 'Option 3'].map((option, index) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() => console.log(`${option} Pressed`)}
+              style={{
+                backgroundColor: '#fff',
+                borderColor: '#8A2BE2',
+                borderWidth: 1,
+                borderRadius: 8,
+                padding: 12,
+                marginVertical: 5,
+                alignItems: 'center',
+              }}
+            >
+              <Text style={{ fontWeight: 'bold', color: '#333' }}>{option}</Text>
+            </TouchableOpacity>
+          ))}
+        </Animated.View>
+        </TouchableWithoutFeedback>
       )}
     </View>
   );
