@@ -10,7 +10,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 
 const BlogPost = ({
   blogId,
-  profileURI,
+  avatarURI,
   author,
   time,
   content,
@@ -52,7 +52,7 @@ const BlogPost = ({
         {/* Profile Header */}
         <View className="flex-row items-center mb-2">
           <Image
-            source={{ uri: profileURI }}
+            source={{ uri: avatarURI }}
             className="w-10 h-10 rounded-full border border-[#FF9C01]"
           />
           <View className="ml-2">

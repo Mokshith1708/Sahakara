@@ -2,11 +2,11 @@ import { Text, View, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { router } from "expo-router";
 
-const Item = ({ id, photo, itemName, price, description }) => {
+const Item = ({ itemId, photo, itemName, price, description, userId, location }) => {
   const handlePress = () => {
     router.push({
-      pathname: `/queries/${id}`,
-      params: { id },
+      pathname: `/queries/${itemId}`,
+      params: { itemId },
     });
   };
 

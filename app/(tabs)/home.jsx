@@ -1,7 +1,7 @@
 import { FlatList, View, Text, RefreshControl } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import images from "@/constants/images"
+import images from "@/constants/images";
 import Item from "@/components/Item";
 import useAppwrite from "@/lib/useAppwrite";
 import { getAllItems } from "@/lib/appwrite";
@@ -49,12 +49,19 @@ const items = [
   },
 ];
 
-
 const Home = () => {
+  const { data: _items, refetch } = useAppwrite(getAllItems);
 
-  // const { data: _items, refetch } = useAppwrite(getAllItems);
-
+  const [searchQuery, setSearchQuery] = useState("");
   const [refreshing, setRefreshing] = useState(false);
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
+
+  const filteredItems = items.filter((item) =>
+    item.itemName.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const onRefresh = async () => {
     setRefreshing(true);
@@ -64,9 +71,10 @@ const Home = () => {
 
   return (
     <SafeAreaView className="flex-1 bg-[#E6E6FA]">
+      <SearchBar value={searchQuery} handleSearch={handleSearch} />
       <FlatList
         className="pt-0 mt-0"
-        data={items}
+        data={filteredItems}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <Item
@@ -76,11 +84,6 @@ const Home = () => {
             price={item.price}
             description={item.description}
           />
-        )}
-        ListHeaderComponent={() => (
-          <View className="flex my-6 px-4 space-y-6">
-            <SearchBar />
-          </View>
         )}
         ListEmptyComponent={() => (
           <View className="h-full w-full flex justify-center">

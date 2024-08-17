@@ -1,17 +1,16 @@
 // src/screens/ProfileScreen.js
 
-import React from 'react';
-import { ScrollView, View, Text } from 'react-native';
-import ProfileHeader from '@/components/ProfileHeader';
-import BlogItem from '@/components/BlogItem';
-import ItemSection from '@/components/ItemSection';
-import { StarIcon } from 'react-native-heroicons/solid'; // Ensure this package is installed
+import React from "react";
+import { ScrollView, View, Text } from "react-native";
+import ProfileHeader from "@/components/ProfileHeader";
+import BlogItem from "@/components/BlogItem";
+import ItemSection from "@/components/ItemSection";
 
 const profile = {
   profilePic: "https://via.placeholder.com/150",
   name: "John Doe",
   email: "john.doe@example.com",
-  points: 1200,   // Example value
+  points: 1200, // Example value
   greenIndex: 75, // Example value
 };
 
@@ -19,7 +18,8 @@ const blogs = [
   {
     id: 1,
     title: "My First Blog",
-    content: "This is the content of my first blog. It is a bit long, so only part of it will be shown here.",
+    content:
+      "This is the content of my first blog. It is a bit long, so only part of it will be shown here.",
   },
   {
     id: 2,
@@ -33,7 +33,8 @@ const items = [
   {
     id: 1,
     name: "Item 1",
-    description: "This is item 1 description. It may be a bit long, so only a preview will be shown here.",
+    description:
+      "This is item 1 description. It may be a bit long, so only a preview will be shown here.",
   },
   {
     id: 2,
@@ -46,7 +47,7 @@ const items = [
 const ProfileScreen = () => {
   const handleSeeMore = () => {
     // Handle "See More" action
-    console.log('See More button clicked');
+    console.log("See More button clicked");
   };
 
   return (
@@ -58,9 +59,9 @@ const ProfileScreen = () => {
         points={profile.points}
       />
 
-     <View className="mt-4">
+      <View className="mt-4">
         {/* <Text className="text-lg font-semibold mb-2">My Items</Text> */}
-        {items.slice(0, 1).map(item => (
+        {items.slice(0, 1).map((item) => (
           <ItemSection
             key={item.id}
             name={item.name}
@@ -72,7 +73,7 @@ const ProfileScreen = () => {
 
       <View className="mb-6">
         {/* <Text className="text-lg font-semibold mb-2">My Blogs</Text> */}
-        {blogs.slice(0, 1).map(blog => (
+        {blogs.slice(0, 1).map((blog) => (
           <BlogItem
             key={blog.id}
             title={blog.title}

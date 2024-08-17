@@ -3,7 +3,7 @@ import { SafeAreaView, FlatList, RefreshControl } from "react-native";
 import BlogPost from "@/components/BlogPost";
 
 import useAppwrite from "@/lib/useAppwrite";
-import { getAllBlogs } from "@/lib/appwrite";
+import { getAllBlogs, getUserById } from "@/lib/appwrite";
 
 const blogs = [
   {
@@ -11,7 +11,8 @@ const blogs = [
     profilePic: "https://via.placeholder.com/150",
     name: "Jane Doe",
     timeAgo: "2 hours ago",
-    content: "This is an example of a LinkedIn-style blog post. Here you can write about your thoughts, experiences, or share updates.",
+    content:
+      "This is an example of a LinkedIn-style blog post. Here you can write about your thoughts, experiences, or share updates.",
     imageUri: "https://via.placeholder.com/600x400",
   },
   {
@@ -19,7 +20,8 @@ const blogs = [
     profilePic: "https://via.placeholder.com/150",
     name: "John Smith",
     timeAgo: "5 hours ago",
-    content: "Another example of a blog post. You can include different types of content here.",
+    content:
+      "Another example of a blog post. You can include different types of content here.",
     imageUri: "https://via.placeholder.com/600x400",
   },
   {
@@ -27,17 +29,18 @@ const blogs = [
     profilePic: "https://via.placeholder.com/150",
     name: "Alice Johnson",
     timeAgo: "1 day ago",
-    content: "Sharing some more content for this blog post. Make sure to keep it engaging and informative.",
+    content:
+      "Sharing some more content for this blog post. Make sure to keep it engaging and informative.",
     imageUri: "",
   },
   // Add more blog posts as needed
 ];
 
 const Blogs = () => {
-
   const { data: _blogs, refetch } = useAppwrite(getAllBlogs);
 
   // func to get blog-author details
+  const author = getUserById({ id:_blogs.authorId });
 
   const [refreshing, setRefreshing] = useState(false);
 
@@ -55,11 +58,11 @@ const Blogs = () => {
         renderItem={({ item }) => (
           <BlogPost
             blogId={item.id} // item.$id
-            profileURI={item.profilePic} // has to compute using authorId
+            avatarURI={item.profilePic} // has to compute using authorId
             author={item.name}
             time={item.timeAgo} // item.$updatedAt
             content={item.content}
-            blogURI={item.imageUri} // blog.blogURI
+            blogURI={item.imageUri} // item.blogURI
             likes={0}
             thumbsUp={0}
           />

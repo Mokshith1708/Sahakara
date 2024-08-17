@@ -18,7 +18,7 @@ const TabIcon = ({ icon, name, color }) => {
   );
 };
 
-export default function RootLayout() {
+export default function TabsLayout() {
   return (
     <GestureHandlerRootView>
       <Tabs
