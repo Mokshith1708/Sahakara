@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Tabs } from "expo-router";
 import { icons } from "../../constants";
 import ThreeDotsMenu from "@/components/ThreeDotsMenu";
-import { Image, View, Text, Modal, FlatList, TouchableOpacity } from "react-native";
+import { Image, View, Text } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import AddOptions from "@/components/addOptions";
 
 const TabIcon = ({ icon, name, color }) => {
   return (
@@ -21,17 +22,6 @@ const TabIcon = ({ icon, name, color }) => {
 
 export default function TabsLayout() {
   const [modalVisible, setModalVisible] = useState(false);
-
-  const options = [
-    { id: "1", name: "Option 1" },
-    { id: "2", name: "Option 2" },
-    { id: "3", name: "Option 3" },
-  ];
-
-  const handleOptionPress = (option) => {
-    console.log(`Selected ${option.name}`);
-    setModalVisible(false);
-  };
 
   return (
     <GestureHandlerRootView>
@@ -102,37 +92,10 @@ export default function TabsLayout() {
           }}
         />
       </Tabs>
-
-      <Modal
-  animationType="slide"
-  transparent={true}
-  visible={modalVisible}
-  onRequestClose={() => setModalVisible(false)}
->
-  <View className="flex-1 justify-end bg-white-600 bg-opacity-100">
-    <View className="bg-white p-4 rounded-t-lg">
-      <FlatList
-        data={options}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            className="p-4 border-b border-gray-300"
-            onPress={() => handleOptionPress(item)}
-          >
-            <Text className="text-black">{item.name}</Text>
-          </TouchableOpacity>
-        )}
+      <AddOptions
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
       />
-      <TouchableOpacity
-        className="mt-4 p-4 bg-red-500 rounded-md"
-        onPress={() => setModalVisible(false)}
-      >
-        <Text className="text-white text-center">Cancel</Text>
-      </TouchableOpacity>
-    </View>
-  </View>
-</Modal>
-
     </GestureHandlerRootView>
   );
 }

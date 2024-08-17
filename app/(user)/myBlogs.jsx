@@ -1,57 +1,42 @@
 import React, { useState } from "react";
-import { View, Text, SafeAreaView, FlatList, RefreshControl } from "react-native";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  FlatList,
+  RefreshControl,
+} from "react-native";
 import BlogPost from "@/components/BlogPost";
-
-import { useEffect } from "react";
+import useAppwrite from "@/lib/useAppwrite";
 import { getBlogsById, getCurrentUser } from "@/lib/appwrite";
 
 const MyBlogs = () => {
-    const [data, setData] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-
-    const currentUser = getCurrentUser();
-  
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const res = await getBlogsById({ id: currentUser.$id });
-        setData(res);
-      } catch (error) {
-        Alert.alert("Error", error.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-  
-    useEffect(() => {
-      fetchData();
-    }, []);
-  
-    const refetch = () => fetchData();
+  const currentUser = getCurrentUser();
+  const { data: blogs, refetch } = useAppwrite(getBlogsById, currentUser.$id);
 
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = async () => {
     setRefreshing(true);
-    await refetch();
+    await refetch(currentUser.$id);
     setRefreshing(false);
   };
 
   return (
     <SafeAreaView className="">
       <FlatList
-        data={data}
-        keyExtractor={(item) => item.id}
+        data={blogs}
+        keyExtractor={(item) => item.$id}
         renderItem={({ item }) => (
           <BlogPost
-            blogId={item.id} // item.$id
-            avatarURI={item.profilePic} // has to compute using authorId
-            author={item.name}
-            time={item.timeAgo} // item.$updatedAt
+            blogId={item.$id}
+            avatarURI={null} // has to compute using authorId
+            author={currentUser.username}
+            time={item.$updatedAt}
             content={item.content}
-            blogURI={item.imageUri} // item.blogURI
-            likes={0}
-            thumbsUp={0}
+            blogURI={item.blogURI}
+            likes={item.likes}
+            thumbsUp={item.thumbsUp}
           />
         )}
         ListEmptyComponent={() => (

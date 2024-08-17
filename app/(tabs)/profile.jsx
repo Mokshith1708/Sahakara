@@ -3,7 +3,7 @@
 import React from "react";
 import { ScrollView, View, Text } from "react-native";
 import ProfileHeader from "@/components/ProfileHeader";
-import BlogItem from "@/components/BlogItem";
+import BlogSection from "@/components/BlogSection";
 import ItemSection from "@/components/ItemSection";
 
 const profile = {
@@ -45,11 +45,6 @@ const items = [
 ];
 
 const ProfileScreen = () => {
-  const handleSeeMore = () => {
-    // Handle "See More" action
-    console.log("See More button clicked");
-  };
-
   return (
     <ScrollView className="flex-1 bg-[#E6E6FA] p-4">
       <ProfileHeader
@@ -60,25 +55,21 @@ const ProfileScreen = () => {
       />
 
       <View className="mt-4">
-        {/* <Text className="text-lg font-semibold mb-2">My Items</Text> */}
         {items.slice(0, 1).map((item) => (
           <ItemSection
             key={item.id}
             name={item.name}
             description={item.description}
-            onSeeMore={handleSeeMore}
           />
         ))}
       </View>
 
       <View className="mb-6">
-        {/* <Text className="text-lg font-semibold mb-2">My Blogs</Text> */}
         {blogs.slice(0, 1).map((blog) => (
-          <BlogItem
+          <BlogSection
             key={blog.id}
             title={blog.title}
             content={blog.content}
-            onSeeMore={handleSeeMore}
           />
         ))}
       </View>
