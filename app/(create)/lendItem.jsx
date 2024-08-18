@@ -23,7 +23,7 @@ const LendItem = () => {
   const { user: currentUser } = useGlobalContext();
   const [form, setForm] = useState({
     itemName: "",
-    photoURI: "",
+    photo: "",
     price: 0,
     description: "",
     userId: "",
@@ -50,14 +50,14 @@ const LendItem = () => {
   const openPicker = async () => {
     try {
       const result = await DocumentPicker.getDocumentAsync({
-        type: ["image/jpeg"],
+        type: ["image/jpeg", "image/png"],
       });
 
       // Debugging: Check the result object
       // console.log("DocumentPicker result:", result);
 
       if (!result.canceled) {
-        setForm({ ...form, photoURI: result.uri });
+        setForm({ ...form, photo: result.assets[0] });
       } else {
         setTimeout(() => {
           Alert.alert("No file chosen");
@@ -70,7 +70,7 @@ const LendItem = () => {
   };
 
   const submit = () => {
-    if (!form.itemName || !form.photoURI || !form.price || !form.description) {
+    if (!form.itemName || !form.photo || !form.price || !form.description) {
       return Alert.alert("Please fill in all the fields");
     }
     setUploading(true);
@@ -82,7 +82,7 @@ const LendItem = () => {
     } finally {
       setForm({
         itemName: "",
-        photoURI: "",
+        photo: "",
         price: 0,
         description: "",
         userId: "",
@@ -113,9 +113,9 @@ const LendItem = () => {
               Item Image
             </Text>
             <TouchableOpacity onPress={() => openPicker()}>
-              {form.photoURI ? (
+              {form.photo ? (
                 <Image
-                  source={{ uri: form.photoURI }}
+                  source={{ uri: form.photo.uri }}
                   resizeMethod="cover"
                   className="w-full h-64 rounded-2xl"
                 />

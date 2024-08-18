@@ -7,9 +7,9 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import timeAgo from "@/utilities/timeAgo";
 
 const BlogPost = ({
-  blogId,
   avatarURI,
   author,
   time,
@@ -57,7 +57,7 @@ const BlogPost = ({
           />
           <View className="ml-2">
             <Text className="text-base font-bold text-[#161622]">{author}</Text>
-            <Text className="text-xs text-[#757575]">{time}</Text>
+            <Text className="text-xs text-[#757575]">{timeAgo(time)}</Text>
           </View>
         </View>
 

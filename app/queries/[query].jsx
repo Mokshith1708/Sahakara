@@ -3,7 +3,8 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Description = () => {
-  const { itemId, photoURI, itemName, price, description, userId, location } = useLocalSearchParams();
+  const { itemId, photoURI, itemName, price, description, userId, location } =
+    useLocalSearchParams();
 
   return (
     <SafeAreaView className="flex-1 bg-gray-100 p-4">
@@ -22,9 +23,7 @@ const Description = () => {
           <Text className="text-3xl font-bold text-gray-800 mb-2">
             {itemName}
           </Text>
-          <Text className="text-base text-gray-600 mb-4">
-            {description}
-          </Text>
+          <Text className="text-base text-gray-600 mb-4">{description}</Text>
           <Text className="text-2xl font-semibold text-gray-900 mb-4">
             ${price}
           </Text>

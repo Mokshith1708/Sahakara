@@ -37,8 +37,7 @@ const MyBlogs = () => {
           keyExtractor={(item) => item.$id}
           renderItem={({ item }) => (
             <BlogPost
-              blogId={item.$id}
-              avatarURI={null} // has to compute using authorId
+              avatarURI={null} // have to compute using authorId
               author={currentUser.username}
               time={item.$updatedAt}
               content={item.content}
@@ -49,7 +48,7 @@ const MyBlogs = () => {
           )}
           ListEmptyComponent={() => (
             <View className="h-full w-full flex justify-center">
-              <Text>No blogs to show</Text>
+              <Text>No items to show</Text>
             </View>
           )}
           refreshControl={
