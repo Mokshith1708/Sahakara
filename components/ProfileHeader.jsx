@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image } from "react-native";
 import { StarIcon } from "react-native-heroicons/solid";
 
-const ProfileHeader = ({ profilePic, name, email, points }) => {
+const ProfileHeader = ({ profileURI, name, email, points }) => {
   const maxStars = 5;
   const activeStars = Math.round(points / 240); // Normalize to 5 stars
 
@@ -10,7 +10,7 @@ const ProfileHeader = ({ profilePic, name, email, points }) => {
     <View className="bg-[#FFFFF0]  shadow-lg rounded-lg p-4 flex-row items-start">
       <View className="w-32 h-32">
         <Image
-          source={{ uri: profilePic }}
+          source={{ uri: profileURI }}
           className="w-full h-full rounded-lg border-2 border-green-500"
         />
       </View>

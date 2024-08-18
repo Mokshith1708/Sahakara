@@ -16,7 +16,7 @@ const Loader = ({ isLoading }) => {
       <ActivityIndicator
         animating={isLoading}
         color="#fff"
-        size={osName === "ios" ? "large" : 50}
+        size={osName === "android" ? "large" : 50}
       />
     </View>
   );

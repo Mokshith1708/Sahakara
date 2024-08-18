@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SafeAreaView, FlatList, RefreshControl } from "react-native";
 import BlogPost from "@/components/BlogPost";
-
+import Loader from "@/components/Loader";
 import useAppwrite from "@/lib/useAppwrite";
 import { getAllBlogs, getUserById } from "@/lib/appwrite";
 
@@ -37,10 +37,10 @@ const blogs = [
 ];
 
 const Blogs = () => {
-  const { data: _blogs, refetch } = useAppwrite(getAllBlogs);
+  const { data: _blogs, refetch, isLoading } = useAppwrite(getAllBlogs);
 
   // func to get blog-author details
-  const author = getUserById({ id:_blogs.authorId });
+  const author = getUserById({ id: _blogs.authorId });
 
   const [refreshing, setRefreshing] = useState(false);
 
@@ -52,30 +52,33 @@ const Blogs = () => {
 
   return (
     <SafeAreaView className="">
-      <FlatList
-        data={blogs}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <BlogPost
-            blogId={item.id} // item.$id
-            avatarURI={item.profilePic} // has to compute using authorId
-            author={item.name}
-            time={item.timeAgo} // item.$updatedAt
-            content={item.content}
-            blogURI={item.imageUri} // item.blogURI
-            likes={0}
-            thumbsUp={0}
-          />
-        )}
-        ListEmptyComponent={() => (
-          <View className="h-full w-full flex justify-center">
-            <Text>No items to show</Text>
-          </View>
-        )}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }
-      />
+      <Loader isLoading={isLoading} />
+      {!isLoading && (
+        <FlatList
+          data={blogs}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <BlogPost
+              blogId={item.id} // item.$id
+              avatarURI={item.profilePic} // has to compute using authorId
+              author={item.name}
+              time={item.timeAgo} // item.$updatedAt
+              content={item.content}
+              blogURI={item.imageUri} // item.blogURI
+              likes={0}
+              thumbsUp={0}
+            />
+          )}
+          ListEmptyComponent={() => (
+            <View className="h-full w-full flex justify-center">
+              <Text>No items to show</Text>
+            </View>
+          )}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
+        />
+      )}
     </SafeAreaView>
   );
 };

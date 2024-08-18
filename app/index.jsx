@@ -20,16 +20,18 @@ const Index = () => {
           height: "100%",
         }}
       >
-        <View className="w-full flex justify-center items-center h-full px-4">
-          <Text className="text-sm font-pregular text-gray-100 mt-7 text-center">
-            Welcome to Sahakara
-          </Text>
-          <CustomButton
-            title="Continue with Email"
-            handlePress={() => router.push("/sign-in")}
-            containerStyles="w-full mt-7"
-          />
-        </View>
+        {!isLoading && (
+          <View className="w-full flex justify-center items-center h-full px-4">
+            <Text className="text-sm font-pregular text-gray-100 mt-7 text-center">
+              Welcome to Sahakara
+            </Text>
+            <CustomButton
+              title="Continue with Email"
+              handlePress={() => router.push("/sign-in")}
+              containerStyles="w-full mt-7"
+            />
+          </View>
+        )}
         <StatusBar backgroundColor="#161622" style="light" />
       </ScrollView>
     </SafeAreaView>

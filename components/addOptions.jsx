@@ -1,5 +1,6 @@
 import { View, Text, Modal, FlatList, TouchableOpacity } from "react-native";
 import React from "react";
+import { router } from "expo-router";
 
 const AddOptions = ({ modalVisible, setModalVisible }) => {
   const options = [
@@ -9,7 +10,12 @@ const AddOptions = ({ modalVisible, setModalVisible }) => {
   ];
 
   const handleOptionPress = (option) => {
-    console.log(`Selected ${option.name}`);
+    // console.log(`Selected ${option.name}`);
+    option.id === "1"
+      ? router.push("/(create)/lendItem")
+      : option.id === "2"
+      ? router.push("/(create)/addService")
+      : router.push("/(create)/addBlog");
     setModalVisible(false);
   };
 

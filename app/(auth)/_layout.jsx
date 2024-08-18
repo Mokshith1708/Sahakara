@@ -1,10 +1,10 @@
-import { Redirect, Stack } from "expo-router";
+import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 
 const AuthLayout = () => {
   return (
     <>
-      <StatusBar backgroundColor="#161622" style="light"/>
+      <StatusBar backgroundColor="#161622" style="light" />
       <Stack>
         <Stack.Screen
           name="sign-in"
