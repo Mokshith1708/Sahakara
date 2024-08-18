@@ -7,12 +7,13 @@ import {
   RefreshControl,
 } from "react-native";
 import useAppwrite from "@/lib/useAppwrite";
-import { getItemsById, getCurrentUser } from "@/lib/appwrite";
+import { getItemsById } from "@/lib/appwrite";
+import { useGlobalContext } from "@/context/GlobalProvider";
 import Item from "@/components/Item";
 
-const MyBlogs = () => {
-  const currentUser = getCurrentUser();
-  const { data: items, refetch } = useAppwrite(getItemsById, currentUser.$id);
+const MyItems = () => {
+  const { user: currentUser } = useGlobalContext();
+  const { data: items, refetch } = useAppwrite(getItemsById, currentUser.id);
 
   const [refreshing, setRefreshing] = useState(false);
 
@@ -30,7 +31,7 @@ const MyBlogs = () => {
         renderItem={({ item }) => (
           <Item
             itemId={item.$id}
-            photo={item.photo}
+            photoURI={item.photoURI}
             itemName={item.itemName}
             price={item.price}
             description={item.description}
@@ -49,4 +50,4 @@ const MyBlogs = () => {
   );
 };
 
-export default MyBlogs;
+export default MyItems;
