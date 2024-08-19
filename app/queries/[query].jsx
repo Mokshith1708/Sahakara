@@ -18,7 +18,6 @@ const Description = () => {
   } = useLocalSearchParams();
 
   const { latitude, longitude } = getLocation(location);
-  console.log(latitude, longitude);
 
   return (
     <SafeAreaView className="flex-1 bg-gray-100">
