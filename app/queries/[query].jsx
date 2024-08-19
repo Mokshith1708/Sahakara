@@ -27,14 +27,9 @@ const Description = () => {
           <Text className="text-2xl font-semibold text-gray-900 mb-4">
             ${price}
           </Text>
-          <View className="flex-row items-center mb-4">
-            {/* Rating and Reviews */}
-            <Text className="text-yellow-500 text-xl">★★★★★</Text>
-            <Text className="text-gray-600 text-sm ml-2">(120 reviews)</Text>
-          </View>
           <TouchableOpacity className="bg-blue-500 py-3 px-4 rounded-lg shadow-md">
             <Text className="text-white text-lg font-semibold text-center">
-              Add to Cart
+              Request
             </Text>
           </TouchableOpacity>
         </View>

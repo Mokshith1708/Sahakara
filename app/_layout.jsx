@@ -39,7 +39,7 @@ export default function RootLayout() {
         <Stack.Screen name="(user)" options={{ headerShown: false }} />
         <Stack.Screen name="(create)" options={{ headerShown: false }} />
         <Stack.Screen name="index" options={{ headerShown: false }} />
-        {/* <Stack.Screen name="queries/[query]" options={{ headerShown: false }} /> */}
+        <Stack.Screen name="queries/[query]" options={{ headerShown: false }} />
       </Stack>
     </GlobalProvider>
   );
