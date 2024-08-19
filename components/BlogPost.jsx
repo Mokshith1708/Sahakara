@@ -5,6 +5,7 @@ import {
   Image,
   SafeAreaView,
   TouchableOpacity,
+  ActivityIndicator,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import timeAgo from "@/utilities/timeAgo";
@@ -22,6 +23,7 @@ const BlogPost = ({
   const [thumbedUp, setThumbedUp] = useState(false);
   const [likeCount, setLikeCount] = useState(likes);
   const [thumbCount, setThumbCount] = useState(thumbsUp);
+  const [isImageLoading, setIsImageLoading] = useState(true);
 
   const handleLike = () => {
     setLiked(!liked);
@@ -65,10 +67,16 @@ const BlogPost = ({
         <Text className="text-sm text-[#212121] mb-2 leading-5">{content}</Text>
 
         {/* Post Image */}
+        {isImageLoading && (
+          <View className="flex-1 justify-center items-center">
+            <ActivityIndicator size="large" color="#0000ff" />
+          </View>
+        )}
         {blogURI && (
           <Image
             source={{ uri: blogURI }}
             className="w-full h-40 rounded-lg mb-2"
+            onLoadEnd={() => setIsImageLoading(false)}
           />
         )}
 

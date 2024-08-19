@@ -16,6 +16,7 @@ import * as DocumentPicker from "expo-document-picker";
 import * as Location from "expo-location";
 import { router } from "expo-router";
 import { useGlobalContext } from "@/context/GlobalProvider";
+import { createItem } from "@/lib/appwrite";
 
 const LendItem = () => {
   const [uploading, setUploading] = useState(false);
@@ -26,7 +27,6 @@ const LendItem = () => {
     photo: "",
     price: 0,
     description: "",
-    userId: "",
     location: "",
   });
 
@@ -58,7 +58,7 @@ const LendItem = () => {
 
       if (!result.canceled) {
         setForm({ ...form, photo: result.assets[0] });
-      } else {
+      } else if (result.canceled && !result) {
         setTimeout(() => {
           Alert.alert("No file chosen");
         }, 100);
@@ -69,12 +69,18 @@ const LendItem = () => {
     }
   };
 
-  const submit = () => {
+  const submit = async () => {
     if (!form.itemName || !form.photo || !form.price || !form.description) {
       return Alert.alert("Please fill in all the fields");
     }
     setUploading(true);
     try {
+      await createItem({
+        ...form,
+        userId: currentUser.$id,
+        lender: currentUser.username,
+      });
+
       Alert.alert("Success", "Item listed successfully");
       router.push("/home");
     } catch (error) {
@@ -85,7 +91,6 @@ const LendItem = () => {
         photo: "",
         price: 0,
         description: "",
-        userId: "",
         location: "",
       });
       setUploading(false);
