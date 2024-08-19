@@ -20,6 +20,8 @@ const MyItems = () => {
     isLoading,
   } = useAppwrite(getItemsById, currentUser.$id); // change in the database to support this
 
+  items.sort((a, b) => new Date(b.$updatedAt) - new Date(a.$updatedAt));
+
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = async () => {

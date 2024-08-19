@@ -20,6 +20,7 @@ const MyBlogs = () => {
     isLoading,
   } = useAppwrite(getBlogsById, currentUser.$id);
 
+  blogs.sort((a, b) => new Date(b.$updatedAt) - new Date(a.$updatedAt));
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = async () => {
