@@ -33,7 +33,7 @@ const AddBlog = () => {
 
       if (!result.canceled) {
         setForm({ ...form, photo: result.assets[0] });
-      } else {
+      } else if (result.canceled && !result) {
         Alert.alert("No file chosen");
       }
     } catch (error) {
@@ -51,6 +51,7 @@ const AddBlog = () => {
       await createBlog({
         ...form,
         authorId: currentUser.$id,
+        author: currentUser.username,
       });
 
       Alert.alert("Success", "Post uploaded successfully");

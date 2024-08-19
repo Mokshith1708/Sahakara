@@ -58,7 +58,7 @@ const LendItem = () => {
 
       if (!result.canceled) {
         setForm({ ...form, photo: result.assets[0] });
-      } else {
+      } else if (result.canceled && !result) {
         setTimeout(() => {
           Alert.alert("No file chosen");
         }, 100);
@@ -78,6 +78,7 @@ const LendItem = () => {
       await createItem({
         ...form,
         userId: currentUser.$id,
+        lender: currentUser.username,
       });
 
       Alert.alert("Success", "Item listed successfully");
