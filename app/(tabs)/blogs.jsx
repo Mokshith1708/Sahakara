@@ -24,7 +24,7 @@ const Blogs = () => {
       {!isLoading && (
         <FlatList
           data={blogs}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.$id}
           renderItem={({ item }) => (
             <BlogPost
               avatarURI={null} // have to compute using authorId

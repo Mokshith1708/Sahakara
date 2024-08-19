@@ -22,7 +22,7 @@ const BlogPost = ({
   const [thumbedUp, setThumbedUp] = useState(false);
   const [likeCount, setLikeCount] = useState(likes);
   const [thumbCount, setThumbCount] = useState(thumbsUp);
-
+  console.log(blogURI,":blog image");
   const handleLike = () => {
     setLiked(!liked);
     setLikeCount(liked ? likeCount - 1 : likeCount + 1);
