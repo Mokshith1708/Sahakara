@@ -28,7 +28,7 @@ const Blogs = () => {
           renderItem={({ item }) => (
             <BlogPost
               avatarURI={null} // have to compute using authorId
-              author={"Anonymous"}
+              author={item.author}
               time={item.$updatedAt}
               content={item.content}
               blogURI={item.blogURI}
