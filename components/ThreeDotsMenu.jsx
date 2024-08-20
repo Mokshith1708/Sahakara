@@ -3,6 +3,8 @@
 import React, { useState, useRef } from 'react';
 import { View, Text, TouchableOpacity, Animated, Dimensions, TouchableWithoutFeedback } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { signOut } from '@/lib/appwrite';
+import { router } from 'expo-router';
 
 const { width, height } = Dimensions.get('window');
 
@@ -43,6 +45,15 @@ const ThreeDotsMenu = () => {
     }
   };
 
+  const handleSignOut =()=>{
+    try {
+      const session = signOut();
+      router.push('/');
+    } catch (error) {
+      Alert.alert("Error", error.message);
+    }
+  }
+
   return (
     <View style={{ position: 'relative', flex: 1 }}>
       <TouchableOpacity onPress={toggleMenu} style={{ position: 'absolute', top: 10, right: 10, zIndex: 2 }}>
@@ -76,10 +87,10 @@ const ThreeDotsMenu = () => {
               Profile Settings
             </Text>
 
-            {['Change Personal Details', 'View Bolgs', 'View Items'].map((option, index) => (
+            {[{itemName:"Signout",funct:handleSignOut}].map((option, index) => (
               <TouchableOpacity
                 key={index}
-                onPress={() => console.log(`${option} Pressed`)}
+                onPress={option.funct}
                 style={{
                   backgroundColor: '#3A3A3A',
                   borderColor: '#FFFFFF',
@@ -90,9 +101,9 @@ const ThreeDotsMenu = () => {
                   alignItems: 'center',
                 }}
               >
-                <Text style={{ fontWeight: 'bold', color: '#FFFFFF' }}>{option}</Text>
+                <Text style={{ fontWeight: 'bold', color: '#FFFFFF' }}>{option.itemName}</Text>
               </TouchableOpacity>
-            ))}
+             ))} 
           </Animated.View>
         </TouchableWithoutFeedback>
       )}
