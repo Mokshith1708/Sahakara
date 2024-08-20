@@ -1,5 +1,5 @@
 import { useLocalSearchParams } from "expo-router";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import getLocation from "@/utilities/getLocation";
 import MapView, { Marker } from "react-native-maps";
@@ -44,7 +44,10 @@ const Description = () => {
           </View>
 
           {/* Location Details */}
-          <View className="h-80 mb-10">
+
+          {/* Maps is not supporting during apk bundling */}
+
+          {/* <View className="h-80 mb-10">
             {latitude && longitude && (
               <MapView
                 style={{ height: "100%" }}
@@ -65,7 +68,7 @@ const Description = () => {
                 />
               </MapView>
             )}
-          </View>
+          </View> */}
           {/* <TouchableOpacity className="bg-blue-500 py-3 px-4 rounded-lg shadow-md mb-3">
             <Text className="text-white text-lg font-semibold text-center">
               Request

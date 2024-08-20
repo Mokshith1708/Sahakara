@@ -1,11 +1,8 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
-import { StarIcon } from "react-native-heroicons/solid";
 import { icons } from "@/constants";
 
 const ProfileHeader = ({ profileURI, name, email, points }) => {
-  const maxStars = 5;
-  const activeStars = Math.round(points / 240); // Normalize to 5 stars
   const { profile } = icons;
 
   return (
@@ -20,15 +17,6 @@ const ProfileHeader = ({ profileURI, name, email, points }) => {
         <Text className="text-2xl font-bold text-black mt-2">{name}</Text>
         <Text className="text-sm text-gray-600">{email}</Text>
         <View className="mt-1">
-          <View className="flex-row mb-1">
-            {Array.from({ length: maxStars }, (_, index) => (
-              <StarIcon
-                key={index}
-                size={20} // Adjust star size
-                color={index < activeStars ? "gold" : "gray"}
-              />
-            ))}
-          </View>
           <Text className="text-sm font-bold text-green-600">
             Score: {points}
           </Text>

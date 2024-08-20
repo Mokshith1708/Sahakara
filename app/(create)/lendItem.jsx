@@ -154,7 +154,10 @@ const LendItem = () => {
             editable={false}
             otherStyles="mt-7"
           />
-          <View style={{ height: 300, marginTop: 20 }}>
+
+          {/* Maps is not supporting during apk bundling */}
+
+          {/* <View style={{ height: 300, marginTop: 20 }}>
             {location && (
               <MapView
                 style={{ flex: 1 }}
@@ -175,7 +178,7 @@ const LendItem = () => {
                 />
               </MapView>
             )}
-          </View>
+          </View> */}
           <CustomButton
             title="Done"
             handlePress={submit}

@@ -54,7 +54,7 @@ const AddBlog = () => {
         author: currentUser.username,
       });
 
-      Alert.alert("Success", "Post uploaded successfully");
+      Alert.alert("Success", "Blog uploaded successfully");
       router.push("/home");
     } catch (error) {
       Alert.alert("Error", error.message);

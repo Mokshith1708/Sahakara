@@ -70,18 +70,27 @@ const BlogPost = ({
         <Text className="text-sm text-[#212121] mb-2 leading-5">{content}</Text>
 
         {/* Post Image */}
-        {isImageLoading && (
-          <View className="flex-1 justify-center items-center">
-            <ActivityIndicator size="large" color="#0000ff" />
-          </View>
-        )}
-        {blogURI && (
-          <Image
-            source={{ uri: blogURI }}
-            className="w-full h-40 rounded-lg mb-2"
-            onLoadEnd={() => setIsImageLoading(false)}
-          />
-        )}
+        <View className="w-full h-40 rounded-xl mt-3 relative flex justify-center items-center">
+          {isImageLoading && (
+            <ActivityIndicator
+              size="large"
+              color="#0000ff"
+              style={{
+                position: "absolute",
+                top: "47%",
+                left: "47%",
+                transform: [{ translateX: -12 }, { translateY: -12 }],
+              }}
+            />
+          )}
+          {blogURI && (
+            <Image
+              source={{ uri: blogURI }}
+              className="w-full h-40 rounded-lg mb-2"
+              onLoadEnd={() => setIsImageLoading(false)}
+            />
+          )}
+        </View>
 
         {/* Interactions */}
         <View className="flex-row items-center mt-1">

@@ -5,7 +5,7 @@ import { router } from "expo-router";
 const AddOptions = ({ modalVisible, setModalVisible }) => {
   const options = [
     { id: "1", name: "Lend an item" },
-    { id: "2", name: "Lend a service" },
+    { id: "2", name: "Add a service" },
     { id: "3", name: "Add a blog" },
   ];
 
@@ -41,7 +41,7 @@ const AddOptions = ({ modalVisible, setModalVisible }) => {
             )}
           />
           <TouchableOpacity
-            className="mt-4 p-4 bg-red-500 rounded-md"
+            className="mt-4 p-4 bg-[#FFA500]"
             onPress={() => setModalVisible(false)}
           >
             <Text className="text-white text-center">Cancel</Text>

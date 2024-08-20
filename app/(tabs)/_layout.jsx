@@ -27,7 +27,7 @@ export default function TabsLayout() {
     <GestureHandlerRootView>
       <Tabs
         screenOptions={{
-          tabBarActiveTintColor: "#1750e8",
+          tabBarActiveTintColor: "#ff9001",
           tabBarInactiveTintColor: "#030a1d",
           tabBarShowLabel: false,
         }}
@@ -43,12 +43,12 @@ export default function TabsLayout() {
           }}
         />
         <Tabs.Screen
-          name="chat"
+          name="services"
           options={{
-            title: "Chat",
-            headerShown: false,
+            title: "Services",
+            headerStyle: { backgroundColor: "#FFA500" },
             tabBarIcon: ({ color }) => {
-              return <TabIcon icon={icons.chat} name="Chat" color={color} />;
+              return <TabIcon icon={icons.service} name="Services" color={color} />;
             },
           }}
         />

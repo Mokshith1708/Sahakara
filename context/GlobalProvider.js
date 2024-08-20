@@ -18,6 +18,7 @@ const GlobalProvider = ({ children }) => {
       if (currentUser) {
         setIsLoggedIn(true);
         setCurrentUser(currentUser);
+        await fetchCurrentUserData(currentUser);
       }
     } catch (error) {
       console.log(error);
@@ -26,7 +27,7 @@ const GlobalProvider = ({ children }) => {
     }
   };
 
-  const fetchCurrentUserData = async () => {
+  const fetchCurrentUserData = async (currentUser) => {
     try {
       setIsLoading(true);
       const [userBlogs, userItems] = await Promise.all([
@@ -45,7 +46,6 @@ const GlobalProvider = ({ children }) => {
 
   useEffect(() => {
     fetchCurrentUser();
-    fetchCurrentUserData();
   }, []);
 
   const refetchCurrentUserData = () => fetchCurrentUserData();
@@ -63,7 +63,7 @@ const GlobalProvider = ({ children }) => {
         items,
         setCurrentUser,
         isLoading,
-        refetchCurrentUserData
+        refetchCurrentUserData,
       }}
     >
       {children}
