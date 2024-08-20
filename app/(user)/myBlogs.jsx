@@ -8,23 +8,16 @@ import {
 } from "react-native";
 import BlogPost from "@/components/BlogPost";
 import Loader from "@/components/Loader";
-import useAppwrite from "@/lib/useAppwrite";
 import { useGlobalContext } from "@/context/GlobalProvider";
-import { getBlogsById } from "@/lib/appwrite";
 
 const MyBlogs = () => {
-  const { user: currentUser } = useGlobalContext();
-  const {
-    data: blogs,
-    refetch,
-    isLoading,
-  } = useAppwrite(getBlogsById, currentUser.$id);
+  const { currentUser, blogs, isLoading, refetchCurrentUserData } = useGlobalContext();
 
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = async () => {
     setRefreshing(true);
-    await refetch(currentUser.$id);
+    await refetchCurrentUserData();
     setRefreshing(false);
   };
 

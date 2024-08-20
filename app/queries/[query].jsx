@@ -39,7 +39,7 @@ const Description = () => {
             </Text>
             <Text className="text-base text-gray-600 mb-4">{description}</Text>
             <Text className="text-2xl font-semibold text-gray-900 mb-4">
-              ${price}
+              Rs.{price}
             </Text>
           </View>
 
@@ -66,11 +66,11 @@ const Description = () => {
               </MapView>
             )}
           </View>
-          <TouchableOpacity className="bg-blue-500 py-3 px-4 rounded-lg shadow-md mb-3">
+          {/* <TouchableOpacity className="bg-blue-500 py-3 px-4 rounded-lg shadow-md mb-3">
             <Text className="text-white text-lg font-semibold text-center">
               Request
             </Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </ScrollView>
     </SafeAreaView>

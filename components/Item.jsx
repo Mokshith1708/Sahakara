@@ -1,7 +1,6 @@
 import { Text, View, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { router } from "expo-router";
-import { createNotSupportedComponent } from "react-native-maps/lib/decorateMapComponent";
 
 const Item = ({
   itemId,
@@ -45,7 +44,7 @@ const Item = ({
         <Text className="text-lg font-bold text-[#333333] mb-5">
           {itemName}
         </Text>
-        <Text className="text-base text-[#ff9900] mb-5">{price}</Text>
+        <Text className="text-base text-[#ff9900] mb-5">Rs.{price}</Text>
         <Text className="text-sm text-[#666666]">{description}</Text>
       </View>
     </TouchableOpacity>

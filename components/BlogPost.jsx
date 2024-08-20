@@ -9,9 +9,10 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import timeAgo from "@/utilities/timeAgo";
+import { icons } from "@/constants";
 
 const BlogPost = ({
-  avatarURI,
+  avatarURI, // need to write for this
   author,
   time,
   content,
@@ -24,6 +25,8 @@ const BlogPost = ({
   const [likeCount, setLikeCount] = useState(likes);
   const [thumbCount, setThumbCount] = useState(thumbsUp);
   const [isImageLoading, setIsImageLoading] = useState(true);
+
+  const { profile } = icons;
 
   const handleLike = () => {
     setLiked(!liked);
@@ -54,7 +57,7 @@ const BlogPost = ({
         {/* Profile Header */}
         <View className="flex-row items-center mb-2">
           <Image
-            source={{ uri: avatarURI }}
+            source={profile}
             className="w-10 h-10 rounded-full border border-[#FF9C01]"
           />
           <View className="ml-2">

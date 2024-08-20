@@ -6,25 +6,18 @@ import {
   FlatList,
   RefreshControl,
 } from "react-native";
-import useAppwrite from "@/lib/useAppwrite";
-import { getItemsById } from "@/lib/appwrite";
 import { useGlobalContext } from "@/context/GlobalProvider";
 import Item from "@/components/Item";
 import Loader from "@/components/Loader";
 
 const MyItems = () => {
-  const { user: currentUser } = useGlobalContext();
-  const {
-    data: items,
-    refetch,
-    isLoading,
-  } = useAppwrite(getItemsById, currentUser.$id); // change in the database to support this
+  const { currentUser, items, isLoading, refetchCurrentUserData } = useGlobalContext();
 
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = async () => {
     setRefreshing(true);
-    await refetch(currentUser.$id);
+    await refetchCurrentUserData();
     setRefreshing(false);
   };
 

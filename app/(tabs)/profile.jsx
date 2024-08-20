@@ -1,18 +1,11 @@
 // src/screens/ProfileScreen.js
 
 import React from "react";
-import { ScrollView, View, Text } from "react-native";
+import { ScrollView, View } from "react-native";
 import ProfileHeader from "@/components/ProfileHeader";
 import BlogSection from "@/components/BlogSection";
 import ItemSection from "@/components/ItemSection";
-
-const profile = {
-  profilePic: "https://via.placeholder.com/150",
-  name: "John Doe",
-  email: "john.doe@example.com",
-  points: 1200, // Example value
-  greenIndex: 75, // Example value
-};
+import { useGlobalContext } from "@/context/GlobalProvider";
 
 const blogs = [
   {
@@ -36,22 +29,17 @@ const items = [
     description:
       "This is item 1 description. It may be a bit long, so only a preview will be shown here.",
   },
-  {
-    id: 2,
-    name: "Item 2",
-    description: "This is item 2 description.",
-  },
-  // Add more item data as needed
 ];
 
 const ProfileScreen = () => {
+  const { currentUser } = useGlobalContext();
+
   return (
     <ScrollView className="flex-1 bg-[#E6E6FA] p-4">
       <ProfileHeader
-        profilePic={profile.profilePic}
-        name={profile.name}
-        email={profile.email}
-        points={profile.points}
+        name={currentUser.username}
+        email={currentUser.email}
+        points={500}
       />
 
       <View className="mt-4">

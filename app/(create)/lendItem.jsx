@@ -21,7 +21,7 @@ import { createItem } from "@/lib/appwrite";
 const LendItem = () => {
   const [uploading, setUploading] = useState(false);
   const [location, setLocation] = useState(null);
-  const { user: currentUser } = useGlobalContext();
+  const { currentUser } = useGlobalContext();
   const [form, setForm] = useState({
     itemName: "",
     photo: "",

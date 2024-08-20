@@ -23,7 +23,7 @@ const AddBlog = () => {
     content: "",
   });
 
-  const { user: currentUser } = useGlobalContext();
+  const { currentUser } = useGlobalContext();
 
   const openPicker = async () => {
     try {
