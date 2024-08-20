@@ -73,7 +73,9 @@ const Create = () => {
   return (
     <SafeAreaView className="bg-primary h-full">
       <ScrollView className="px-4 my-6">
-        <Text className="text-2xl text-white font-psemibold">Upload Service</Text>
+        <Text className="text-2xl text-white font-psemibold">
+          Upload Service
+        </Text>
 
         <View className="mt-7 space-y-2">
           <Text className="text-base text-gray-100 font-pmedium">

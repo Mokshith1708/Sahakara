@@ -3,10 +3,7 @@ import React from "react";
 import { TextInput } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-const SearchBar = ({
-  value,
-  handleSearch,
-}) => {
+const SearchBar = ({ value, handleSearch }) => {
   return (
     <View className="relative w-9/10 mb-5 mx-2.5 h-14 bg-[#FFFFF0] rounded-lg flex">
       <Icon

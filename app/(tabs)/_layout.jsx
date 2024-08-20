@@ -48,7 +48,9 @@ export default function TabsLayout() {
             title: "Services",
             headerStyle: { backgroundColor: "#FFA500" },
             tabBarIcon: ({ color }) => {
-              return <TabIcon icon={icons.service} name="Services" color={color} />;
+              return (
+                <TabIcon icon={icons.service} name="Services" color={color} />
+              );
             },
           }}
         />

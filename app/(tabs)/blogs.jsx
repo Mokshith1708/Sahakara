@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { Text, View, SafeAreaView, FlatList, RefreshControl } from "react-native";
+import {
+  Text,
+  View,
+  SafeAreaView,
+  FlatList,
+  RefreshControl,
+} from "react-native";
 import BlogPost from "@/components/BlogPost";
 import Loader from "@/components/Loader";
 import useAppwrite from "@/lib/useAppwrite";

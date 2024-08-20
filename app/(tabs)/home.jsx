@@ -45,7 +45,7 @@ const Home = () => {
               description={item.description}
               userId={item.userId}
               location={item.location}
-              lender = {item.lender}
+              lender={item.lender}
             />
           )}
           ListEmptyComponent={() => (

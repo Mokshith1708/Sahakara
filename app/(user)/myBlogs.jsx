@@ -11,7 +11,8 @@ import Loader from "@/components/Loader";
 import { useGlobalContext } from "@/context/GlobalProvider";
 
 const MyBlogs = () => {
-  const { currentUser, blogs, isLoading, refetchCurrentUserData } = useGlobalContext();
+  const { currentUser, blogs, isLoading, refetchCurrentUserData } =
+    useGlobalContext();
 
   blogs.sort((a, b) => new Date(b.$updatedAt) - new Date(a.$updatedAt));
   const [refreshing, setRefreshing] = useState(false);
