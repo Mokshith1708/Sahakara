@@ -6,6 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { signOut } from '@/lib/appwrite';
 import { router } from 'expo-router';
 
+
 const { width, height } = Dimensions.get('window');
 
 const ThreeDotsMenu = () => {
@@ -45,13 +46,16 @@ const ThreeDotsMenu = () => {
     }
   };
 
-  const handleSignOut =()=>{
+  const handleSignOut =async ()=>{
     try {
-      const session = signOut();
-      router.push('/');
+      await signOut();
+      router.replace('/(auth)/sign-in');
     } catch (error) {
       Alert.alert("Error", error.message);
     }
+  }
+  const handleChangePassword =()=>{
+     router.push('/(create)/changePassword')
   }
 
   return (
@@ -87,7 +91,7 @@ const ThreeDotsMenu = () => {
               Profile Settings
             </Text>
 
-            {[{itemName:"Signout",funct:handleSignOut}].map((option, index) => (
+            {[{itemName:"Sign Out",funct:handleSignOut},{itemName:"Change Password",funct:handleChangePassword}].map((option, index) => (
               <TouchableOpacity
                 key={index}
                 onPress={option.funct}
