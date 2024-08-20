@@ -18,7 +18,7 @@ const Description = () => {
     lender,
   } = useLocalSearchParams();
 
-  const { latitude, longitude } = getLocation(location);
+  // const { latitude, longitude } = getLocation(location);
   const { data: user } = useAppwrite(getUserById, userId);
 
   return (
