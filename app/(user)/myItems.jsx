@@ -13,6 +13,8 @@ import Loader from "@/components/Loader";
 const MyItems = () => {
   const { currentUser, items, isLoading, refetchCurrentUserData } = useGlobalContext();
 
+  items.sort((a, b) => new Date(b.$updatedAt) - new Date(a.$updatedAt));
+
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = async () => {

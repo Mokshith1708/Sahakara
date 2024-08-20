@@ -7,7 +7,7 @@ import { getAllBlogs } from "@/lib/appwrite";
 
 const Blogs = () => {
   const { data: blogs, refetch, isLoading } = useAppwrite(getAllBlogs);
-
+  blogs.sort((a, b) => new Date(b.$updatedAt) - new Date(a.$updatedAt));
   // func to get blog-author details
 
   const [refreshing, setRefreshing] = useState(false);

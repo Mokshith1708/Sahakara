@@ -9,7 +9,7 @@ import Loader from "@/components/Loader";
 
 const Home = () => {
   const { data: items, refetch, isLoading } = useAppwrite(getAllItems);
-
+  items.sort((a, b) => new Date(b.$updatedAt) - new Date(a.$updatedAt));
   const [searchQuery, setSearchQuery] = useState("");
   const [refreshing, setRefreshing] = useState(false);
 
