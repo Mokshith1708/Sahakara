@@ -61,7 +61,7 @@ const ThreeDotsMenu = () => {
     }
   };
   const handleChangePassword = () => {
-    router.push("/(create)/changePassword");
+    router.push("/(auth)/changePassword");
   };
 
   return (
