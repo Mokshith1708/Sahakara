@@ -142,6 +142,7 @@
 - Item Description Page
 - Bug Fixes
 - APK Bundling
+- Database Management
 
 #### Pavan
 - Add Items Page
