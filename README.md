@@ -61,36 +61,7 @@ A platform that enables users to lend, borrow, and exchange goods and services l
     </div>
 </div>
 
-<style>
-    .menu {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
 
-    .menu-item {
-        flex-basis: 100%; /* Full width on small screens */
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .menu-item img {
-        width: 200px;
-        height: auto;
-    }
-
-    @media (min-width: 600px) {
-        .menu-item {
-            flex-basis: 45%; /* 2 items per row on larger screens */
-        }
-    }
-
-    @media (min-width: 900px) {
-        .menu-item {
-            flex-basis: 30%; /* 3 items per row on wider screens */
-        }
-    }
-</style>
 
 
 ## Contribution
