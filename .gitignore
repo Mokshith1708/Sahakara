@@ -7,4 +7,5 @@ nativewind-env.d.ts
 .expo
 node_modules
 .expo
+.idea
 # @end expo-cli

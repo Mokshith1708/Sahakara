@@ -1,50 +1,75 @@
-# Welcome to your Expo app 👋
+# Sahakara App
+## Description
+A platform that enables users to lend, borrow, and exchange goods and services locally. By promoting the sharing and reuse of items, the platform reduces new purchases and waste (SDG 12) while fostering community engagement and resilience (SDG 11). 
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## App Documentation
+### Sign In Page
+![](./App-pics/signin.jpeg)
+### Sign Up Page
+![](./App-pics/signup.jpeg)
+### Home Page
+![](./App-pics/home_page.jpeg)
+### Search Bar
+![](./App-pics/search_bar.jpeg)
+### Item Description
+![](./App-pics/item_description.jpeg)
+### Services Page
+![](./App-pics/services_page.jpeg)
+### Blogs Page
+![](./App-pics/blog_page.jpeg)
+### Likes In Blog Page
+![](./App-pics/Blog_page_for_likes.jpeg)
+### Profile Page
+![](./App-pics/profile_page.jpeg)
+### Side Bar Menu 
+![](./App-pics/sidebar_menu.jpeg)
+### My items Page
+![](./App-pics/myitmes_page.jpeg)
 
-## Get started
 
-1. Install dependencies
+## Contribution
+### Mokshith
 
-   ```bash
-   npm install
-   ```
+* Blog Page
+* Profile Page
+* Profile Settings Menu
+* Refactoring: Home Page, Item Description Page
+* UI Design
 
-2. Start the app
+### Sasaank
 
-   ```bash
-    npx expo start
-   ```
+* Sign-In Page
+* Sign-Up Page
+* Services Page
+* My Blogs, Items
+* Backend
+* Add Services
 
-In the output, you'll find options to open the app in a
+### Sonith
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+* Home Page
+* Search Bar
+* Navigtion Bar
+* Item Description Page
+* Bug Fixes
+* APK Bundling
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Pavan
 
-## Get a fresh project
+* Add Items Page
+* Bug Fixing
+* Appwrite Data Handling
 
-When you're ready, run:
+### Akshatha
 
-```bash
-npm run reset-project
-```
+* Added Sign-Out feature
+* Refactoring Profile Settings
+* Appwrite Data Handling
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Venkat
 
-## Learn more
+* Change Password
+* Appwrite Data Handling
+* Add Blog
 
-To learn more about developing your project with Expo, look at the following resources:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
