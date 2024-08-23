@@ -8,4 +8,5 @@ nativewind-env.d.ts
 node_modules
 .expo
 .idea
+./lib/appwriteConfig.js
 # @end expo-cli

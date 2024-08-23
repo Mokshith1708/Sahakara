@@ -6,11 +6,15 @@
 
 ### Tech Stack:
 
-
-- **React-Native**
-- **Expo**
-- 
-
+- ####  Front-End:
+  - **React-Native**
+  - **Native-Wind**
+- #### Dev-Environment/Routing/Apk-Building:
+  - **Expo**
+- #### Backend/Database:
+    - **App-Write**
+- #### Debugging:
+    - **Android Studio**
 
 
 ### Features
@@ -26,6 +30,32 @@
 - **Likes in Blog Page:** Engage with the community by liking and commenting on blog posts.
 - **Side Bar Menu:** Navigate through different sections of the app.
 - **My Items Page:** Keep track of the items you’ve lent, borrowed, or exchanged.
+
+### How to run:
+ - **APK-Version**
+    -  Apk version is available here: [Sahakara.apk](https://github.com/Mokshith1708/Sahakara/blob/main/build-1724177347665.apk)
+    - Download it and give all the required permissions to run the app.
+
+- **Source-code**
+    - Install Node.js and npm on your machine.
+    - Have an Appwrite server for backend services.
+    - Use Expo to build the app locally or in expo cloud.
+    - Run the following commands to get started:
+
+      ```bash
+      # Clone the repository
+      git clone https://github.com/Mokshith1708/Sahakara.git
+
+      # Navigate to the project directory
+      cd Sahakara
+
+      # Install dependencies
+      npm install
+
+      # Start the development server
+      npx expo start
+      ```
+
 
 ### Screenshots
 
@@ -128,11 +158,4 @@
 - Appwrite Data Handling
 - Add Blog
 
-## Getting Started
-
-### Prerequisites
-
-- Node.js and npm installed on your machine.
-- An Appwrite server for backend services.
-- Expo to build the app locally or in expo cloud.
 
